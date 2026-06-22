@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 再次相遇</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2b3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .page {
+      max-width: 820px;
+      width: 100%;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e6eaef;
+      padding: 2.4rem 2.2rem;
+      margin-bottom: 1.8rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+    }
+    .hero-card {
+      background: #ffffff;
+      border-left: 5px solid #2f5d7a;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0b1e2c;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #3f5566;
+      margin-bottom: 0.1rem;
+      border-bottom: 1px dashed #d0d8e0;
+      padding-bottom: 0.8rem;
+    }
+    .opening {
+      font-size: 1.05rem;
+      background: #f7f9fb;
+      padding: 1.2rem 1.5rem;
+      border-radius: 18px;
+      margin: 1.2rem 0 0.5rem;
+      color: #1a2d3c;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 1.6rem 0 0.8rem;
+      color: #1a2f40;
+      letter-spacing: -0.01em;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.2rem 0 0.2rem;
+    }
+    .feature-item {
+      background: #f6f8fa;
+      border: 1px solid #e2e8ef;
+      border-radius: 20px;
+      padding: 0.9rem 1.2rem;
+      flex: 1 1 200px;
+      font-size: 0.95rem;
+      transition: background 0.15s;
+    }
+    .feature-item strong {
+      display: block;
+      font-weight: 600;
+      color: #1d3c51;
+      margin-bottom: 0.2rem;
+    }
+    .feature-item:hover {
+      background: #eef2f6;
+    }
+    .scene-note {
+      background: #f3f6fa;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.4rem 0 0.6rem;
+      border-left: 4px solid #7f9bb0;
+    }
+    .faq-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .faq-q {
+      font-weight: 500;
+      color: #1a3346;
+    }
+    .faq-a {
+      color: #2e4a5f;
+      padding-left: 0.6rem;
+      border-left: 2px solid #bcc9d6;
+      margin-bottom: 0.4rem;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #4f6679;
+      border-top: 1px solid #dce2e9;
+      padding-top: 1.5rem;
+    }
+    a {
+      color: #1f5370;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    a:hover {
+      border-bottom-color: #1f5370;
+    }
+    .inline-link {
+      background: #edf2f7;
+      padding: 0.1rem 0.3rem;
+      border-radius: 6px;
+    }
+    .btn-like {
+      display: inline-block;
+      background: #ffffff;
+      border: 1px solid #b8cbd9;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-size: 0.9rem;
+      color: #1a3a4f;
+      font-weight: 450;
+      margin: 0.2rem 0.4rem 0.2rem 0;
+      transition: all 0.12s;
+      cursor: default;
+    }
+    .btn-like:hover {
+      background: #eaf0f6;
+      border-color: #8aa7bd;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.6rem 0;
+    }
+    .tag {
+      background: #e6edf4;
+      border-radius: 30px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.8rem;
+      color: #244b62;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .card {
+        padding: 1.6rem 1.2rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .feature-item {
+        flex: 1 1 100%;
+      }
+      .hero-card {
+        border-left-width: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 开场短句 -->
+  <div class="card hero-card">
+    <h1>又回到这里。</h1>
+    <div class="hero-sub">关于 <a href="https://webs-wc26umc.com" class="inline-link">世界杯</a> 的整理与备忘</div>
+    <div class="opening">
+      <span style="font-size:1.2rem; margin-right:0.2rem;">📋</span> 
+      如果你曾收藏过这个页面，或偶然再次打开——这里的内容一直保持着平实的记录。没有突然的弹窗，没有夸张的标题，只有关于 <strong>世界杯</strong> 的一些事实、故事和值得反复回看的信息。
+    </div>
+  </div>
+
+  <!-- 承接段落：再次访问 & 收藏的意义 -->
+  <div class="card">
+    <h2>为什么值得再次打开</h2>
+    <p>
+      四年又四年，赛程、球队、经典瞬间不断更迭。这个页面不是新闻滚动条，而是一个安静的存放处。当你因为某个比赛日、某篇旧报道或者一段回忆重新搜索到它，你会发现：<strong>世界杯</strong> 从来不只是胜负。
+    </p>
+    <p>
+      把链接保持在收藏夹里，不是为了追逐每一条快讯，而是为了在需要的时候——比如想查一届冷门赛事、对比某届金靴，或者单纯想重温一段叙述——可以立刻回到这里。页面结构经得起时间，内容也经过筛选。
+    </p>
+    <div style="background:#f3f6fb; border-radius:20px; padding:0.8rem 1.2rem; margin-top:0.6rem;">
+      <span style="font-weight:500;">💡 小提示：</span> 你可以用浏览器书签收藏 <a href="https://webs-wc26umc.com">世界杯</a> 页面，方便之后再次访问，内容会持续补充和整理。
+    </div>
+  </div>
+
+  <!-- 特点列表：卡片分区，柔和阴影 -->
+  <div class="card">
+    <h2>这个页面整理了什么</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>🏆 历届脉络</strong>
+        从早期赛事到最近一届，冠军、举办地、决赛比分，每一个节点都有简明记录。
+      </div>
+      <div class="feature-item">
+        <strong>⚽ 经典瞬间</strong>
+        那些被反复播放的进球、扑救和庆祝——这里用文字定格，不依赖视频。
+      </div>
+      <div class="feature-item">
+        <strong>📊 数据与冷门</strong>
+        进球数、出场纪录、黑马之旅……数字背后是真实的故事。
+      </div>
+      <div class="feature-item">
+        <strong>📌 收藏友好</strong>
+        页面轻量、无广告干扰，适合长期保留在书签栏。
+      </div>
+    </div>
+
+    <div class="scene-note">
+      <span style="font-weight:500;">📎 持续关注的理由</span><br>
+      未来新一届赛事前后，这里会更新对应的内容模块。你不必每天都来，但每当你想起 <strong>世界杯</strong>，这个页面都在。
+    </div>
+  </div>
+
+  <!-- 温和的场景与FAQ摘要 -->
+  <div class="card">
+    <h2>一些你可能想问的</h2>
+    <div class="faq-mini">
+      <div>
+        <div class="faq-q">❓ 页面多久更新一次？</div>
+        <div class="faq-a">没有固定频率，但会在重要赛事前后、或收集到有价值的内容时做调整。每次更新都保留旧版本的核心。</div>
+      </div>
+      <div>
+        <div class="faq-q">❓ 我可以分享这个链接吗？</div>
+        <div class="faq-a">当然。直接复制 <a href="https://webs-wc26umc.com">世界杯</a> 的链接给朋友即可，它一直有效。</div>
+      </div>
+      <div>
+        <div class="faq-q">❓ 为什么没有实时比分？</div>
+        <div class="faq-a">这里侧重回顾与整理，实时信息可以参考官方渠道。页面更希望成为一个安静的参考资料库。</div>
+      </div>
+    </div>
+    <div style="margin-top:1.2rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+      <span class="tag">收藏</span>
+      <span class="tag">再访问</span>
+      <span class="tag">世界杯历史</span>
+      <span class="tag">整理</span>
+    </div>
+  </div>
+
+  <!-- 温和结尾，呼应再次访问 -->
+  <div class="card" style="text-align:center; padding:1.6rem 2rem;">
+    <p style="font-size:1.05rem;">
+      🌍 每次回到这里，都是一次安静的回顾。<br>
+      关于 <a href="https://webs-wc26umc.com" style="font-weight:500;">世界杯</a> 的记录会慢慢生长。
+    </p>
+    <div style="margin-top: 0.8rem; color:#4b6a7e; font-size:0.9rem;">
+      — 页面内容基于公开信息整理，保持克制与真实 —
+    </div>
+  </div>
+
+  <!-- 装饰性底栏（非链接文本） -->
+  <div class="footer-note">
+    你可以随时关闭这个页面，它一直在这里。
+  </div>
+</div>
+</body>
+</html>
